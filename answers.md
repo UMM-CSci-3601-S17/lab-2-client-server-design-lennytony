@@ -29,3 +29,5 @@ It gives us the user with the given id as a json object.
 
 
 ##What happens when the user accesses the page "kittens"? Modify the server code so accessing the page "kittens" results in the text "Meow". Describe what you did and how it worked.
+A simple HTML with a text 'Meow' is returned. 
+We use a route for GET request for '/kittens' path and return the string 'Meow'.
