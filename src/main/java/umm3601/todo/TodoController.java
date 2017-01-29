@@ -27,6 +27,12 @@ public class TodoController {
             filteredTodos = filterTodosByStatus(filteredTodos, status);
         }
 
+        // Filter contains if defined
+        if(queryParams.containsKey("contains")) {
+            String contains = queryParams.get("contains")[0];
+            filteredTodos = filterTodosByContains(filteredTodos, contains);
+        }
+
         // Filter limit if defined
         if(queryParams.containsKey("limit")) {
             // Get the value of the query
@@ -42,20 +48,16 @@ public class TodoController {
     }
 
     public Todo[] filterTodosByStatus(Todo[] filteredTodos, String status) {
-        return null;
+        // If the user provides an invalid value, it would be initialized to 'false'
+        boolean convertedStatus = status.equals("complete") ? true : false;
+        return Arrays.stream(filteredTodos).filter(x -> x.status == convertedStatus).toArray(Todo[]::new);
     }
 
     public Todo[] filterTodosByContains(Todo[] filteredTodos, String contain) {
-        return null;
+        return Arrays.stream(filteredTodos).filter(x -> x.body.contains(contain)).toArray(Todo[]::new);
     }
 
-    // Filter users by age
-//    public Todo[] filterUsersByAge(Todo[] filteredUsers, int age) {
-//        return Arrays.stream(filteredUsers).filter(x -> x.age == age).toArray(User[]::new);
-//    }
-
-    // Get a single user
-//    public Todo getUser(String id) {
-//        return Arrays.stream(users).filter(x -> x._id.equals(id)).findFirst().orElse(null);
-//    }
+    public Todo getTodo(String id) {
+        return Arrays.stream(todos).filter(x -> x._id.equals(id)).findFirst().orElse(null);
+    }
 }
