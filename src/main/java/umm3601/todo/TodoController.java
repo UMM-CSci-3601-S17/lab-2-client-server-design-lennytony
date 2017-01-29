@@ -20,6 +20,13 @@ public class TodoController {
     public Todo[] listTodos(Map<String, String[]> queryParams) {
         Todo[] filteredTodos = todos;
 
+        // Filter status if defined
+        if(queryParams.containsKey("status")) {
+            // Get the string value - complete or incomplete
+            String status = queryParams.get("status")[0];
+            filteredTodos = filterTodosByStatus(filteredTodos, status);
+        }
+
         // Filter limit if defined
         if(queryParams.containsKey("limit")) {
             // Get the value of the query
@@ -32,6 +39,14 @@ public class TodoController {
 
     public Todo[] limitTodos(Todo[] filteredTodos, int limit) {
         return Arrays.copyOf(filteredTodos, limit);
+    }
+
+    public Todo[] filterTodosByStatus(Todo[] filteredTodos, String status) {
+        return null;
+    }
+
+    public Todo[] filterTodosByContains(Todo[] filteredTodos, String contain) {
+        return null;
     }
 
     // Filter users by age
