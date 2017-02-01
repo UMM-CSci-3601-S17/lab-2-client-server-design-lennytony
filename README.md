@@ -84,7 +84,7 @@ Your server should now be running on port 4567, the default Spark port. Visit it
 
 The client-side portion of your project will be tested using [Karma][karma] and [Jasmine][jasmine]. Karma is a JavaScript test runner, and Jasmine is the framework / "language" that you will write tests in. It is highly recommend that you read the Jasmine testing tutorial linked in the resources section at the bottom of this README.
 
-Client-sided tests are located in the `src/test/javascript` directory. Naming follows a simple pattern. For a file such as `clientJavascript.js`, the test would be called `clientJavascript.spec.js`. All client-side tests end in `.spec.js`.
+Client-sided tests are located in the `src/test/javascript` directory. Naming follows a simple pattern. For a file such as `clientJavascript.js`, the test would be called `todo.spec.js`. All client-side tests end in `.spec.js`.
 
 To run your client-side tests, run the `karmaRun` task inside the `karma` task category.
 
