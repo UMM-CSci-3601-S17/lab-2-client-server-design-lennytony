@@ -1,11 +1,13 @@
 package umm3601.todo;
 
 import com.google.gson.Gson;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Comparator;
 
 public class TodoController {
     private Todo[] todos;
@@ -52,6 +54,11 @@ public class TodoController {
             filteredTodos = limitTodos(filteredTodos, limit);
         }
 
+        if(queryParams.containsKey("orderBy")) {
+            String orderBy = queryParams.get("orderBy")[0];
+            filteredTodos = sortTodos(filteredTodos, orderBy);
+        }
+
         return filteredTodos;
     }
 
@@ -75,6 +82,28 @@ public class TodoController {
 
     public Todo[] filterTodosByCategory(Todo[] filteredTodos, String category) {
         return Arrays.stream(filteredTodos).filter(x -> x.category.equals(category)).toArray(Todo[]::new);
+    }
+
+    public Todo[] sortTodos(Todo[] filteredTodos, String criteria) {
+        // if criteria is status
+        if (criteria.equals("status")) {
+            Comparator<Todo> byStatus = (Todo t1, Todo t2) -> Boolean.compare(t1.status, t2.status);
+            return Arrays.stream(filteredTodos).sorted(byStatus).toArray(Todo[]::new);
+        }
+        else if (criteria.equals("owner")) {
+            Comparator<Todo> byOwner = (Todo t1, Todo t2) -> t1.owner.compareTo(t2.owner);
+            return Arrays.stream(filteredTodos).sorted(byOwner).toArray(Todo[]::new);
+        }
+        else if (criteria.equals("body")) {
+            Comparator<Todo> byBody = (Todo t1, Todo t2) -> t1.body.compareTo(t2.body);
+            return Arrays.stream(filteredTodos).sorted(byBody).toArray(Todo[]::new);
+        }
+        else if (criteria.equals("category")) {
+            Comparator<Todo> byCategory = (Todo t1, Todo t2) -> t1.category.compareTo(t2.category);
+            return Arrays.stream(filteredTodos).sorted(byCategory).toArray(Todo[]::new);
+        }
+        // This should never happen unless someone misspells
+        return null;
     }
 
     public Todo getTodo(String id) {
