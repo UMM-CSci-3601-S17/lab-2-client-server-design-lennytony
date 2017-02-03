@@ -19,8 +19,8 @@ public class SortTodosTest {
         assertEquals("Incorrect ordering if constaint is owner (first element wrong)", "588959856f0b82ee93cd93eb",todosSortedByOwner[0]._id);
         assertEquals("Incorrect ordering if constaint is owner (last element wrong)", "5889598507bf610948f8fb64",todosSortedByOwner[299]._id);
         Todo[] todosSortedByBody = todoController.sortTodos(allTodos, "body");
-        assertEquals("Incorrect ordering if constaint is body (first element wrong)", "58895985d0d57d81513889dc",todosSortedByBody[0]._id);
-        assertEquals("Incorrect ordering if constaint is body (last element wrong)", "588959851c339989d49f0f42",todosSortedByBody[299]._id);
+        assertEquals("Incorrect ordering if constaint is body (first element wrong)", "58895985ffd38481b57cac97",todosSortedByBody[0]._id);
+        assertEquals("Incorrect ordering if constaint is body (last element wrong)", "58895985afee3d5d4bde99d7",todosSortedByBody[299]._id);
         Todo[] todosSortedByStatus = todoController.sortTodos(allTodos, "status");
         assertEquals("Incorrect ordering if constaint is status (first element wrong)", "58895985a22c04e761776d54",todosSortedByStatus[0]._id);
         assertEquals("Incorrect ordering if constaint is status (last element wrong)", "58895985a69d6afde00af172",todosSortedByStatus[299]._id);
@@ -40,8 +40,8 @@ public class SortTodosTest {
 
         queryParams.put("orderBy", new String[] {"body"});
         Todo[] todosSortedByBody = todoController.listTodos(queryParams);
-        assertEquals("Incorrect ordering if constaint is body (first element wrong)", "58895985d0d57d81513889dc",todosSortedByBody[0]._id);
-        assertEquals("Incorrect ordering if constaint is body (last element wrong)", "588959851c339989d49f0f42",todosSortedByBody[299]._id);
+        assertEquals("Incorrect ordering if constaint is body (first element wrong)", "58895985ffd38481b57cac97",todosSortedByBody[0]._id);
+        assertEquals("Incorrect ordering if constaint is body (last element wrong)", "58895985afee3d5d4bde99d7",todosSortedByBody[299]._id);
 
         queryParams.put("orderBy", new String[] {"status"});
         Todo[] todosSortedByStatus = todoController.listTodos(queryParams);
