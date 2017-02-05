@@ -29,7 +29,10 @@ function myJsFunction(){
     var limit=document.getElementById('limit').value;
     var status=document.getElementById('status').value;
     var contains=document.getElementById('contains').value;
-    var url = buildURL(id, limit, status, contains);
+    var owner=document.getElementById('owner').value;
+    var category=document.getElementById('category').value;
+    var orderBy=document.getElementById('orderBy').value;
+    var url = buildURL(id, limit, status, contains, owner, category, orderBy);
 
     var HttpThingy = new HttpClient();
     HttpThingy.get(url, function(returned_json){
@@ -37,11 +40,19 @@ function myJsFunction(){
     });
 }
 
-function buildURL(id, limit, status, contains) {
+function buildURL(id, limit, status, contains, owner, category, orderBy) {
     if (id) {
-        return "/api/todos/"  + id
+        return "/api/todos/"  + id;
     }
-    return "/api/todos?" + "limit=" + limit + "&status=" + status + "&contains=" + contains
+    var url = "/api/todos?";
+    if (limit) url = url + "&limit=" + limit;
+    if (status) url = url + "&status=" + status;
+    if (contains) url = url + "&contains=" + contains;
+    if (owner) url = url + "&owner=" + owner;
+    if (category) url = url + "&category=" + category;
+    if (orderBy) url = url + "&orderBy=" + orderBy;
+    return url;
+    // return "/api/todos?" + "&limit=" + limit + "&status=" + status + "&contains=" + contains + "&owner=" + owner + "&category=" + category + "&orderBy=" + orderBy;
 }
 
 /**
