@@ -102,8 +102,8 @@ public class TodoController {
             Comparator<Todo> byCategory = (Todo t1, Todo t2) -> t1.category.compareTo(t2.category);
             return Arrays.stream(filteredTodos).sorted(byCategory).toArray(Todo[]::new);
         }
-        // This should never happen unless someone misspells
-        return null;
+        // This happens quite often whenever orderBy is undefined
+        return filteredTodos;
     }
 
     public Todo getTodo(String id) {
