@@ -1,4 +1,4 @@
-# Answers of the questions
+# Answers to the questions
 ##What is the purpose of .gitignore?  
 
 All the files in .gitignore do not show up in git status. (git doesn't track them)  
@@ -30,9 +30,9 @@ It gives us users whose age field is 25 as a json object.
 It gives us the user with the given id as a json object.  
 
 
-##What happens when the user accesses the page "kittens"? Modify the server code so accessing the page "kittens" results in the text "Meow". Describe what you did and how it worked.
-A simple HTML with a text 'Meow' is returned. 
-We use a route for GET request for '/kittens' path and return the string 'Meow'.
+##What happens when the user accesses the page "kittens"? Modify the server code so accessing the page "kittens" results in the text "Meow". Describe what you did and how it worked.  
+Simple HTML with a text 'Meow' is returned. 
+We use a route for GET request for `/kittens` path and return the string 'Meow'.
 
 ## What are the contents of the `public` folder? What is the purpose of each HTML files there?
 HTMLs, a folder for CSS, a folder for javaScript, and assets.
