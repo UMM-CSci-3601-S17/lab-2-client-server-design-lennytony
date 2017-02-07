@@ -63,7 +63,10 @@ public class TodoController {
     }
 
     public Todo[] limitTodos(Todo[] filteredTodos, int limit) {
-        return Arrays.copyOf(filteredTodos, limit);
+        if (filteredTodos.length >= limit) {
+            return Arrays.copyOf(filteredTodos, limit);
+        }
+        return filteredTodos;
     }
 
     public Todo[] filterTodosByStatus(Todo[] filteredTodos, String status) {
